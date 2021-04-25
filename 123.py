@@ -20,13 +20,22 @@ class GameSprite(sprite.Sprite):
 
 class Player(GameSprite):
 #метод для управления спрайтом стрелками клавиатуры
-    def update(self):
+    def update_l(self):
         keys = key.get_pressed()
-        if keys[K_LEFT] and self.rect.x > 5:
-            self.rect.x -= self.speed
-        if keys[K_RIGHT] and self.rect.x < win_width - 80:
-            self.rect.x += self.speed
+        if keys[K_LEFT]:
+            self.rect.y -= self.speed
+        if keys[K_RIGHT]:# and self.rect.y < win_width - 80:
+            self.rect.y += self.speed
+    def update_r(self):
+        keys = key.get_pressed()
+        if keys[K_w]:
+            self.rect.y -= self.speed
+        if keys[K_s]:# and self.rect.y < win_width - 80:
+            self.rect.y += self.speed
 class Ball(GameSprite):
+    def update(self):
+        print()
+
 #метод "выстрел" (используем место игрока, чтобы создать там пулю)
 win_width = 700
 win_height = 700
@@ -42,8 +51,11 @@ while run:
     for e in event.get():
         if e.type == QUIT:
             run = False
+    man.update_l()
+    man1.update_r()
     man.reset()
     man1.reset()
+
     display.update()
 
     
