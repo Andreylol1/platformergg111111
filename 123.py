@@ -26,6 +26,7 @@ class Player(GameSprite):
             self.rect.x -= self.speed
         if keys[K_RIGHT] and self.rect.x < win_width - 80:
             self.rect.x += self.speed
+class Ball(GameSprite):
 #метод "выстрел" (используем место игрока, чтобы создать там пулю)
 win_width = 700
 win_height = 700
@@ -35,7 +36,7 @@ window = display.set_mode((win_width, win_height))
 monsters = sprite.Group()
 window.fill(gg)
 man = Player("1.png", 5, 500 - 100, 40, 100, 10)
-man1 = Player("1.png", 70, 500 - 100, 40, 100, 10)
+man1 = Player("1.png", 655, 500 - 100, 40, 100, 10)
 run = True
 while run:
     for e in event.get():
